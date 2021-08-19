@@ -201,7 +201,7 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor(AudioPluginAudi
 	peakGainSliderAttachment(audioProcessor.apvts, "Peak Gain", peakGainSlider),
 	peakQualitySliderAttachment(audioProcessor.apvts, "Peak Quality", peakQualitySlider),
 	lowCutSlopeSliderAttachment(audioProcessor.apvts, "LowCut Slope", lowCutSlopeSlider),
-	highCutSlopeSliderAttachment(audioProcessor.apvts, "LowCut Slope", lowCutSlopeSlider)
+	highCutSlopeSliderAttachment(audioProcessor.apvts, "HighCut Slope", highCutSlopeSlider)
 
 
 {

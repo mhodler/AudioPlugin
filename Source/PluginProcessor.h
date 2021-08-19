@@ -117,11 +117,11 @@ private:
 		chain.setBypassed<2>(true);
 		chain.setBypassed<3>(true);
 
-		switch (Slope) {
+		switch (Slope) {							//whatever Case is beeing triggered also executes the cases below
 
 			case Slope_48:
 			{
-				update<3>(chain, cutCoefficients);
+				update<3>(chain, cutCoefficients);	//hardest Possible Cut 
 			}
 		case Slope_36:
 			{
@@ -134,47 +134,8 @@ private:
 			}
 		case Slope_12:
 			{ 
-				update<0>(chain, cutCoefficients);
-			}
-		
-				/*case Slope_12: {
-				*chain.get<0>().coefficients = *cutCoefficients[0];
-				chain.setBypassed<0>(false);
-				break;
-			}
-
-
-			case Slope_24: {
-				*chain.get<0>().coefficients = *cutCoefficients[0];
-				chain.setBypassed<0>(false);
-				*chain.get<1>().coefficients = *cutCoefficients[1];
-				chain.setBypassed<1>(false);
-				break;
-			}
-
-			case Slope_36:
-			{
-				*chain.get<0>().coefficients = *cutCoefficients[0];
-				chain.setBypassed<0>(false);
-				*chain.get<1>().coefficients = *cutCoefficients[1];
-				chain.setBypassed<1>(false);
-				*chain.get<2>().coefficients = *cutCoefficients[2];
-				chain.setBypassed<2>(false);
-				break;
-			}
-
-			case Slope_48:
-			{
-				*chain.get<0>().coefficients = *cutCoefficients[0];
-				chain.setBypassed<0>(false);
-				*chain.get<1>().coefficients = *cutCoefficients[1];
-				chain.setBypassed<1>(false);
-				*chain.get<2>().coefficients = *cutCoefficients[2];
-				chain.setBypassed<2>(false);
-				*chain.get<3>().coefficients = *cutCoefficients[3];
-				chain.setBypassed<3>(false);
-				break;
-			}*/
+				update<0>(chain, cutCoefficients);	//softest Possible Cut
+			}	
 		}
 	
 	};
