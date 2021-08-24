@@ -100,7 +100,7 @@ void RotarySliderWithLabels::paint(juce::Graphics &g)
 										jmap(getValue(), range.getStart(), range.getEnd(), 0.0, 1.0),
 										startAng,
 										endAng,
-										*this);
+										*this); //this represents the slider that has been created this function doesnt make a new slider it just reforms the old one
 
 	auto center = sliderBounds.toFloat().getCentre();
 	auto radius = sliderBounds.getWidth() * 0.5f;

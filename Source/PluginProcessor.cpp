@@ -105,7 +105,7 @@ void AudioPluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
 
 	spec.sampleRate = sampleRate;
 
-	leftChain.prepare(spec);
+	leftChain.prepare(spec); //Channel output not just Mono
 	rightChain.prepare(spec);
 
 	updateFilters();
@@ -158,16 +158,16 @@ void AudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
-	updateFilters();
+	updateFilters(); //Always update your parameters first
 
 	juce::dsp::AudioBlock<float> block(buffer);
-	auto leftBlock = block.getSingleChannelBlock(0);
+	auto leftBlock = block.getSingleChannelBlock(0); 
 	auto rightBlock = block.getSingleChannelBlock(1);
 
 	juce::dsp::ProcessContextReplacing<float> leftContext(leftBlock);
 	juce::dsp::ProcessContextReplacing<float> rightContext(rightBlock);
 
-	leftChain.process(leftContext);
+	leftChain.process(leftContext);//sending buffer blocks to different channels
 	rightChain.process(rightContext);
 
 }
@@ -282,8 +282,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout
 
 	layout.add(std::make_unique<juce::AudioParameterFloat>(	"LowCut Freq",
 															"Low Cutt Frequency",
-															juce::NormalisableRange<float>(20.f, 20000.f, 1.f, 0.25f),
-															20.f));
+															juce::NormalisableRange<float>(20.f, 20000.f, 1.f, 0.25f),	//min value, max value, stepsize, slider distribution
+															20.f));														//starting value
 
 
 	layout.add(std::make_unique<juce::AudioParameterFloat>(	"HighCut Freq",

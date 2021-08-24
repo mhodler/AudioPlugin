@@ -10,7 +10,7 @@
 
 #include <JuceHeader.h>
 
-enum Slope
+enum Slope //C++ doesnt allow numbers as VariableIdentifiers so i made an enum to correctly say what the variable represents
 {
 	Slope_12,
 	Slope_24,
@@ -18,13 +18,13 @@ enum Slope
 	Slope_48
 };
 
-struct ChainSettings
+struct ChainSettings //all Parameters added
 {
 	float peakFreq{ 0 }, peakGainInDecibels{ 0 }, peakQuality{ 1.f };
 	float lowCutFreq{ 0 }, highCutFreq{ 0 };
 
 	Slope lowCutSlope{ Slope::Slope_12 }, highCutSlope{ Slope::Slope_12 };
-};
+}; 
 
 ChainSettings getChainSettings(juce::AudioProcessorValueTreeState& apvts);
 
@@ -89,7 +89,7 @@ private:
 
 	MonoChain leftChain, rightChain;
 
-	enum ChainPosition {
+	enum ChainPosition { //3-Band equalizer therefor 3 values
 		LowCut,
 		Peak,
 		HighCut
